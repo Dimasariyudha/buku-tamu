@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jan 2025 pada 09.43
+-- Waktu pembuatan: 16 Jan 2025 pada 07.45
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -33,6 +33,14 @@ CREATE TABLE `kunjungan` (
   `id_tamu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `kunjungan`
+--
+
+INSERT INTO `kunjungan` (`id_kunjungan`, `tanggal_kunjungan`, `id_tamu`) VALUES
+(1, '2025-01-16', 1),
+(2, '2025-01-16', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -41,11 +49,19 @@ CREATE TABLE `kunjungan` (
 
 CREATE TABLE `tamu` (
   `id_tamu` int(11) NOT NULL,
-  `nama_tamu` varchar(100) NOT NULL,
-  `no_hp` varchar(20) NOT NULL,
-  `id_keperluan` int(11) DEFAULT NULL,
-  `id_jenisTamu` int(11) DEFAULT NULL
+  `nama_tamu` varchar(100) DEFAULT NULL,
+  `no_hp` varchar(20) DEFAULT NULL,
+  `keperluan` text DEFAULT NULL,
+  `jenis_tamu` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tamu`
+--
+
+INSERT INTO `tamu` (`id_tamu`, `nama_tamu`, `no_hp`, `keperluan`, `jenis_tamu`) VALUES
+(1, 'mhs', NULL, NULL, 'Mahasiswa'),
+(2, 'mhs', '231234', NULL, 'Mahasiswa');
 
 -- --------------------------------------------------------
 
@@ -101,13 +117,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kunjungan`
 --
 ALTER TABLE `kunjungan`
-  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kunjungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tamu`
 --
 ALTER TABLE `tamu`
-  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

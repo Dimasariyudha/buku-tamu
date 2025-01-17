@@ -1,0 +1,129 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fff; /* White background */
+    color: #333;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #070606; /* Clearer border for the card */
+}
+
+/* Left Section */
+.left-section {
+    flex: 1;
+    background: #53bd6c; /* Green background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.left-section img {
+    width: 200px; /* Enlarged logo */
+    margin-bottom: 20px;
+}
+
+.left-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.left-section p {
+    font-size: 14px;
+}
+
+/* Right Section */
+.right-section {
+    flex: 1;
+    background: #fff;
+    color: #555;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #800000; /* Maroon focus border */
+}
+
+/* Remember Me Section */
+.remember-me {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    accent-color: #007bff; /* Modern checkbox styling */
+}
+
+/* Button Styles */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background: #800000; /* Maroon background for login button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #660000; /* Darker maroon on hover */
+}
+
+/* Footer Text */
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #aaa;
+}

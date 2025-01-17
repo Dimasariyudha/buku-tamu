@@ -14,7 +14,7 @@ if ($koneksi->connect_error) {
 }
 
 // Jika koneksi berhasil
-echo "Koneksi berhasil!";
+// echo "Koneksi berhasil!";
 
 // (Opsional) Tutup komentar di bawah untuk menyembunyikan pesan koneksi berhasil
 // echo "";
