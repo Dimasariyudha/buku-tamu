@@ -1,16 +1,18 @@
 <?php
-
-
 // include koneksi
 require_once 'connection.php';
+
+// session start
+session_start();
 
 // cek jika ada di set $_post
 if (isset($_POST) == true) {
 
+    $nik = htmlspecialchars($_POST['nik_tamu']);
     $nama_tamu = $_POST['nama_tamu'];
     $no_hp = $_POST['no_hp'];
-    // pekerjaan (PNS, NON PNS, MAHASISWA, LAINNYA)
 
+    // pekerjaan (PNS, NON PNS, MAHASISWA, LAINNYA)
     $jenis_tamu = $_POST['pekerjaan'];
 
     // tampung perkerjaan
@@ -42,7 +44,7 @@ if (isset($_POST) == true) {
     // cek jika pekerjaan 'Lainnya'
     if ($jenis_tamu === 'Lainnya' or $jenis_tamu === 'lainnya') {
         // masukkan pekerjaan 'Lainnya' dan tambahkan detail pekerjaan spesifik yang diinputkan oleh user
-        $pekerjaan = $jenis_tamu . ' ' . $detailPekerjaanSpesifik;
+        $pekerjaan = $jenis_tamu . ' (' . $detailPekerjaanSpesifik . ')';
     }
 
 
@@ -55,7 +57,7 @@ if (isset($_POST) == true) {
     // jika keperluan lainnya + $keperluanInput
     if ($keperluan === 'Lainnya') {
         # code...
-        $tujuan = $keperluan . ' ' . $keperluanInput;
+        $tujuan = $keperluan . ' (' . $keperluanInput . ')';
     } else {
         # code...
         $tujuan = $keperluan;
@@ -66,11 +68,12 @@ if (isset($_POST) == true) {
 
     try {
         // 1. Insert ke table 'tamu' menggunakan prepared statment
-        $queryInsertTamu = "INSERT INTO tamu (nama_tamu, no_hp, keperluan, jenis_tamu)  VALUES (?, ?, ?, ?)";
+        $queryInsertTamu = "INSERT INTO tamu (nik, nama_tamu, no_hp, keperluan, jenis_tamu, status_notifikasi) VALUES (?, ?, ?, ?, ?, 1)";
         $stmtTamu = mysqli_prepare($koneksi, $queryInsertTamu);
         mysqli_stmt_bind_param(
             $stmtTamu,
-            "ssss",
+            "sssss",
+            $nik,
             $nama_tamu,
             $no_hp,
             $tujuan,
@@ -83,7 +86,7 @@ if (isset($_POST) == true) {
 
         // 2. Insert ke tabel `kunjungan` menggunakan prepared statement
         $queryInsertKunjungan = "INSERT INTO kunjungan (tanggal_kunjungan, id_tamu) 
-                             VALUES (CURDATE(), ?)";
+                             VALUES (NOW(), ?)";
         $stmtKunjungan = mysqli_prepare($koneksi, $queryInsertKunjungan);
         mysqli_stmt_bind_param($stmtKunjungan, "i", $id_tamu);
         mysqli_stmt_execute($stmtKunjungan);
@@ -91,27 +94,23 @@ if (isset($_POST) == true) {
         // Commit transaksi
         mysqli_commit($koneksi);
 
-        echo "<script>
-                window.alert('data tamu kamu berhasil ditambahkan');
-                window.location.href = 'index.php';
-            </script>";
+
+        // buat session untuk menampilkan pesan sukses
+        $_SESSION['success_message'] = "Data tamu berhasil ditambahkan!";
     } catch (Exception $e) {
         // Rollback jika terjadi error
         mysqli_rollback($koneksi);
-        echo "Gagal menyimpan data: " . $e->getMessage();
-        echo "<script>
-        window.alert('Gagal menambahkan data tamu. Silakan coba lagi.');
-        window.location.href = 'index.php';
-        </script>";
+
+        // buat session untuk menampilkan pesan yang gagal
+        $_SESSION['error_message'] = "Gagal menyimpan data tamu. Silakan coba lagi.";
     }
 
     // Tutup statement dan koneksi
     mysqli_stmt_close($stmtTamu);
     mysqli_stmt_close($stmtKunjungan);
     mysqli_close($koneksi);
-} else {
-    echo "<script>
-                window.alert('kamu blm menginputkan data tamu. Silakan coba lagi.');
-                window.location.href = 'index.php';
-            </script>";
+
+    // redirect ke form buku tamu
+    header("Location: index.php");
+    exit();
 }

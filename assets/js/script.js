@@ -5,6 +5,30 @@ const detailPekerjaanSpesifik = document.getElementById('detailPekerjaanSpesifik
 const keperluanSelect = document.getElementById('keperluan');
 const keperluanInput = document.getElementById('keperluanInput');
 
+console.log("Script.js berhasil dimuat");
+
+
+// Fungsi validasi NIK
+function validateNik() {
+    const nik = input.value;
+    const errorElement = document.getElementById("nikError");
+
+    console.log('validatenik berjalan');
+
+    // Hanya angka yang diperbolehkan
+    // if (!/^\d*$/.test(nik)) {
+    //     input.value = nik.replace(/\D/g, ''); // Hapus karakter non-angka
+    // }
+
+    // // Tampilkan error jika panjang kurang dari 16
+    // if (nik.length > 0 && nik.length < 16) {
+    //     errorElement.style.display = "block";
+    // } else {
+    //     errorElement.style.display = "none";
+    // }
+}
+
+
 // ketika pekerjaan di pilih
 pekerjaanSelect.addEventListener('change', () => {
     // ambil nilainya kemudian simpan kedalam variable selectedValue
