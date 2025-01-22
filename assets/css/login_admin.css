@@ -11,55 +11,56 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #fae5e5; /* Merah muda lembut untuk latar belakang */
-    color: #4d0000; /* Merah gelap untuk teks */
+    background: #f9f9f9; /* Background netral yang lembut */
+    color: #333; /* Teks warna abu gelap */
 }
 
 /* Container Styles */
 .container {
     display: flex;
     width: 900px;
-    background: #fff5f5; /* Putih dengan sedikit nuansa merah */
+    background: #fff; /* Putih untuk card */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(200, 0, 0, 0.2); /* Shadow lembut dengan warna merah */
-    border: 1px solid #f0b3b3; /* Border merah muda halus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow lembut */
+    border: 1px solid #ddd; /* Border yang lebih halus */
 }
 
 /* Left Section */
 .left-section {
     flex: 1;
-    background: linear-gradient(135deg, #b30000, #e40f0f); /* Gradasi merah gelap ke merah muda cerah */
-    color: #ffffff;
+    background: linear-gradient(135deg, #96c7a6, #96c7a6); /* Gradasi hijau sage */
+    color: #333; /* Teks abu-abu gelap */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 30px;
     text-align: center;
+    border-right: 1px solid #e5e5e5; /* Garis pemisah */
 }
 
 .left-section img {
-    width: 200px; /* Ukuran logo proporsional */
-    margin-bottom: 30px;
+    width: 200px; /* Kembali ke ukuran logo semula */
+    margin-bottom: 20px;
 }
 
 .left-section h2 {
-    font-size: 24px;
+    font-size: 22px; /* Ukuran heading semula */
     margin-bottom: 10px;
-    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .left-section p {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 14px; /* Ukuran teks semula */
+    line-height: 1.5;
 }
 
 /* Right Section */
 .right-section {
     flex: 1;
-    background: #fff0f0; /* Putih sedikit merah untuk kontras lembut */
-    color: #660000; /* Merah gelap untuk teks */
+    background: #fff;
+    color: #555; /* Abu-abu gelap untuk teks */
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -67,10 +68,10 @@ body {
 }
 
 .right-section h3 {
-    color: #e40d0d; /* Merah medium untuk heading */
+    color: #E12454; /* Warna dominan */
     margin-bottom: 20px;
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -83,19 +84,19 @@ body {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #ff9999; /* Border merah lembut */
+    border: 1px solid #ddd; /* Border halus */
     border-radius: 5px;
     outline: none;
-    transition: border 0.3s;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
-    border-color: #ff6666; /* Merah cerah untuk fokus */
-    box-shadow: 0 0 5px rgba(255, 102, 102, 0.5); /* Glowing merah */
+    border-color: #E12454; /* Fokus dengan warna utama */
+    box-shadow: 0 0 8px rgba(225, 36, 84, 0.3); /* Efek glowing */
 }
 
 .form-group input::placeholder {
-    color: #cc6666; /* Placeholder merah pastel */
+    color: #aaa; /* Placeholder abu-abu lembut */
 }
 
 /* Remember Me Section */
@@ -103,32 +104,32 @@ body {
     display: flex;
     align-items: center;
     font-size: 14px;
-    color: #660000; /* Merah gelap */
+    color: #555;
 }
 
 .remember-me input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    accent-color: #b30000; /* Merah medium */
+    accent-color: #E12454; /* Checkbox warna dominan */
 }
 
 /* Button Styles */
 .btn-login {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #cc0000, #ff4d4d); /* Gradasi merah gelap ke merah terang */
-    color: #ffffff;
+    background: linear-gradient(135deg, #E12454, #ff6f8c); /* Gradasi merah modern */
+    color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-login:hover {
-    background: linear-gradient(135deg, #990000, #ff3333); /* Gradasi merah gelap lebih kuat */
+    background: linear-gradient(135deg, #c41742, #ff5777); /* Warna hover lebih gelap */
     transform: scale(1.05); /* Efek memperbesar */
 }
 
@@ -137,21 +138,5 @@ body {
     margin-top: 20px;
     font-size: 12px;
     text-align: center;
-    color: #994d4d; /* Merah pastel gelap */
-}
-
-/* CSS untuk pesan error */
-.error-message {
-    color: red;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    text-align: center;
-    margin-top: 15px;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: bold;
+    color: #bbb; /* Warna abu lembut */
 }
