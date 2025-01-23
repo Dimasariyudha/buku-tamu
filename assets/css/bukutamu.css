@@ -6,146 +6,121 @@
 
 body {
     background-color: #F4F9FC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     font-family: 'Roboto', sans-serif;
-    padding: 15px;
 }
 
 .container-form {
-    max-width: 450px;
-    width: 100%;
+    max-width: 36.25rem;
+    /* width: 100%; */
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px 25px;
+    /* padding-top: 54px; */
+    /* padding: 20px 25px; */
 }
 
-h3 {
+.judul {
     font-family: 'Exo', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     text-align: center;
-    color: #333;
+    color: var(--secondary);
 }
 
-p {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
+.sub-judul {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--tertiary);
 }
 
-.form-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
+/* multipel step */
+.step-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-indicator .step {
+            width: 40px;
+            height: 40px;
+            background: #dcdcdc;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-indicator .step.active {
+            background: #dc3545;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 45px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .step-indicator .step:nth-child(1) .step-label {
+            left: 21px;
+        }
+
+        .step-indicator .step:nth-child(3) .step-label {
+            left: 50%;
+        }
+
+        .step-indicator .step:nth-child(5) .step-label {
+            right: -35px;
+        }
+
+        .step-indicator .line {
+            flex: 1;
+            height: 2px;
+            background: #dcdcdc;
+            z-index: 0;
+        }
+
+        .step-indicator .line.active {
+            background: #dc3545;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #bb2d3b;
+            border-color: #bb2d3b;
+        }
+
+        .btn-success {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-success:hover {
+            background-color: #bb2d3b;
+            border-color: #bb2d3b;
+        }
+
+.is-invalid {
+    border-color: red;
 }
 
-.form-control,
-.form-select {
-    border-radius: 8px;
-    font-size: 14px;
-    height: 40px;
+.is-invalid:focus {
+    outline: none;
+    box-shadow: 0 0 5px red;
 }
 
-.form-control::placeholder {
-    color: #bbb;
-    font-size: 14px;
-}
 
-.btn-submit {
-    background-color: var(--primary);
-    color: #ffffff;
-    font-size: 16px;
-    padding: 10px 0;
-    border-radius: 8px;
-    border: none;
-    width: 100%;
-    font-weight: semibold;
-}
-
-.btn-submit:hover {
-    background-color: #ff6f85;
-}
-
-.btn-back {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #333;
-    color: #ffffff;
-    font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.btn-back:hover {
-    background-color: #555;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-    body {
-        display: block;
-        padding: 10px;
-    }
-
-    .container-form {
-        margin: 0 auto;
-        padding: 15px 20px;
-    }
-
-    h3 {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 13px;
-    }
-
-    .btn-back {
-        top: 10px;
-        left: 10px;
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container-form {
-        padding: 10px 15px;
-    }
-
-    h3 {
-        font-size: 16px;
-    }
-
-    p {
-        font-size: 12px;
-    }
-
-    .form-label {
-        font-size: 13px;
-    }
-
-    .form-control,
-    .form-select {
-        height: 36px;
-        font-size: 13px;
-    }
-
-    .btn-submit {
-        font-size: 14px;
-        padding: 8px 0;
-    }
-
-    .btn-back {
-        font-size: 11px;
-        padding: 5px 8px;
-    }
-}
+/* btn */
