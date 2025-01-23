@@ -11,53 +11,56 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #fff; /* White background */
-    color: #333;
+    background: #f9f9f9; /* Background netral yang lembut */
+    color: #333; /* Teks warna abu gelap */
 }
 
 /* Container Styles */
 .container {
     display: flex;
     width: 900px;
-    background: #fff;
+    background: #fff; /* Putih untuk card */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #070606; /* Clearer border for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow lembut */
+    border: 1px solid #ddd; /* Border yang lebih halus */
 }
 
 /* Left Section */
 .left-section {
     flex: 1;
-    background: #E12454; /* Green background */
-    color: #fff;
+    background: linear-gradient(135deg, #96c7a6, #96c7a6); /* Gradasi hijau sage */
+    color: #333; /* Teks abu-abu gelap */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 30px;
     text-align: center;
+    border-right: 1px solid #e5e5e5; /* Garis pemisah */
 }
 
 .left-section img {
-    width: 200px; /* Enlarged logo */
+    width: 200px; /* Kembali ke ukuran logo semula */
     margin-bottom: 20px;
 }
 
 .left-section h2 {
-    font-size: 22px;
+    font-size: 22px; /* Ukuran heading semula */
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .left-section p {
-    font-size: 14px;
+    font-size: 14px; /* Ukuran teks semula */
+    line-height: 1.5;
 }
 
 /* Right Section */
 .right-section {
     flex: 1;
     background: #fff;
-    color: #555;
+    color: #555; /* Abu-abu gelap untuk teks */
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -65,10 +68,11 @@ body {
 }
 
 .right-section h3 {
-    color: #333;
+    color: #E12454; /* Warna dominan */
     margin-bottom: 20px;
     text-align: center;
     font-size: 24px;
+    font-weight: bold;
 }
 
 /* Form Styles */
@@ -78,15 +82,21 @@ body {
 
 .form-group input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd; /* Border halus */
     border-radius: 5px;
     outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
-    border-color: #800000; /* Maroon focus border */
+    border-color: #E12454; /* Fokus dengan warna utama */
+    box-shadow: 0 0 8px rgba(225, 36, 84, 0.3); /* Efek glowing */
+}
+
+.form-group input::placeholder {
+    color: #aaa; /* Placeholder abu-abu lembut */
 }
 
 /* Remember Me Section */
@@ -101,23 +111,26 @@ body {
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    accent-color: #007bff; /* Modern checkbox styling */
+    accent-color: #E12454; /* Checkbox warna dominan */
 }
 
 /* Button Styles */
 .btn-login {
     width: 100%;
-    padding: 10px;
-    background: #800000; /* Maroon background for login button */
+    padding: 12px;
+    background: linear-gradient(135deg, #E12454, #ff6f8c); /* Gradasi merah modern */
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-login:hover {
-    background: #660000; /* Darker maroon on hover */
+    background: linear-gradient(135deg, #c41742, #ff5777); /* Warna hover lebih gelap */
+    transform: scale(1.05); /* Efek memperbesar */
 }
 
 /* Footer Text */
@@ -125,5 +138,5 @@ body {
     margin-top: 20px;
     font-size: 12px;
     text-align: center;
-    color: #aaa;
+    color: #bbb; /* Warna abu lembut */
 }
