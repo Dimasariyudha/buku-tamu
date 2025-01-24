@@ -1,0 +1,37 @@
+body.bg-teal {
+    background-color: #008080;
+}
+
+.card {
+    border: none;
+}
+
+h5.text-teal {
+    color: #008080;
+    font-size: 1.25rem;
+}
+
+p.fw-semibold {
+    font-size: 1rem;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img[alt="Logo"] {
+    width: 150px; /* Ukuran logo diperbesar */
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #004494;
+    border-color: #004494;
+}

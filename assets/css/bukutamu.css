@@ -1,0 +1,126 @@
+:root {
+    --primary: #E12454;
+    --secondary: #223A66;
+    --tertiary: #6F8BA4;
+}
+
+body {
+    background-color: #F4F9FC;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-form {
+    max-width: 36.25rem;
+    /* width: 100%; */
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* padding-top: 54px; */
+    /* padding: 20px 25px; */
+}
+
+.judul {
+    font-family: 'Exo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--secondary);
+}
+
+.sub-judul {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--tertiary);
+}
+
+/* multipel step */
+.step-indicator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-indicator .step {
+            width: 40px;
+            height: 40px;
+            background: #dcdcdc;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-indicator .step.active {
+            background: #dc3545;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 45px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .step-indicator .step:nth-child(1) .step-label {
+            left: 21px;
+        }
+
+        .step-indicator .step:nth-child(3) .step-label {
+            left: 50%;
+        }
+
+        .step-indicator .step:nth-child(5) .step-label {
+            right: -35px;
+        }
+
+        .step-indicator .line {
+            flex: 1;
+            height: 2px;
+            background: #dcdcdc;
+            z-index: 0;
+        }
+
+        .step-indicator .line.active {
+            background: #dc3545;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #bb2d3b;
+            border-color: #bb2d3b;
+        }
+
+        .btn-success {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-success:hover {
+            background-color: #bb2d3b;
+            border-color: #bb2d3b;
+        }
+
+.is-invalid {
+    border-color: red;
+}
+
+.is-invalid:focus {
+    outline: none;
+    box-shadow: 0 0 5px red;
+}
+
+
+/* btn */
