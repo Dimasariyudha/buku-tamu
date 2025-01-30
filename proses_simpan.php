@@ -8,6 +8,7 @@ session_start();
 // cek jika ada di set $_post
 if (isset($_POST) == true) {
 
+    // data diri
     // $nomor_identitas_diri = htmlspecialchars($_POST['nomor_identitas_diri']);
     // $nama_tamu = $_POST['nama_tamu'];
     // $no_hp = $_POST['no_hp'];

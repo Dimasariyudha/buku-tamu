@@ -66,37 +66,37 @@
             <div class="form-step" id="step1">
                 <div class="mb-3">
                     <label for="nomor_identitas_diri" class="form-label">Nomor Identitas Diri</label>
-                    <input type="text" class="form-control" id="nomor_identitas_diri" name="nomor_identitas_diri" placeholder="Masukkan NIK/Paspor/SIM anda">
+                    <input type="text" class="form-control" id="nomor_identitas_diri" name="nomor_identitas_diri" placeholder="Masukkan NIK/Paspor/SIM anda" required>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="nama_tamu" placeholder="Masukkan nama anda">
+                    <input type="text" class="form-control" id="name" name="nama_tamu" placeholder="Masukkan nama anda" required>
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Nomor HP/Telepon</label>
-                    <input type="text" class="form-control" id="phone" name="nomor_hp" placeholder="Masukkan nomor telepon anda">
+                    <input type="text" class="form-control" id="phone" name="nomor_hp" placeholder="Masukkan nomor telepon anda" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Jenis Kelamin</label>
                     <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="Pria">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Pria" required>
                             <label class="form-check-label" for="male">Pria</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="Wanita">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Wanita" required>
                             <label class="form-check-label" for="female">Wanita</label>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Step 2 -->
+            <!-- Step 2 - Pekerjaan-->
             <div class="form-step d-none" id="step2">
                 <!-- Pekerjaan -->
                 <div class="mb-3">
                     <label for="pekerjaan" class="form-label">Pekerjaan Anda</label>
-                    <select class="form-select" id="pekerjaan" name="pekerjaan">
+                    <select class="form-select" id="pekerjaan" name="pekerjaan" required>
                         <option selected disabled>--- Pilih Pekerjaan Anda ---</option>
                         <option value="ASN">ASN</option>
                         <option value="Non ASN">Non ASN</option>
@@ -106,62 +106,18 @@
                 </div>
                 <!-- end pekerjaan -->
 
-                <!-- ASN SECTION -->
-                <!-- Detail Pekerjaan ASN (Select) -->
-                <div class="mb-3" id="detailPekerjaan" style="display: none;">
-                    <label for="detailPekerjaanSelectASN" class="form-label">Detail Pekerjaan</label>
-                    <select class="form-select" id="detailPekerjaanSelectASN" name="detailPekerjaan">
-                        <option selected disabled value="">--- Pilih Detail Pekerjaan Anda ---</option>
-                        <option value="Kementerian">Kementerian/ Lembaga Pemerintah Non Kementerian</option>
-                        <option value="OPD Prov Sumut">OPD Provinsi SUMUT</option>
-                        <option value="OPD Provinsi Lain">OPD Provinsi Lain</option>
-                        <option value="OPD Kabupaten/Kota">OPD Kabupaten/Kota</option>
-                    </select>
-                </div>
-
-                <!-- Detail Pekerjaan ASN bedasarkan OPD Provinsi Lain -->
-                <div class="mb-3" id="detailOPD_provinsi_lain" style="display: none;">
-                    <label for="detailOPD_provinsi_lain_label" class="form-label">Sebutkan OPD Provinsi Anda</label>
-                    <input type="text" class="form-control" id="detailOPD_provinsi_lain_label" name="detailOPD_provinsi_lain" placeholder="Sebutkan asal OPD Provinsi anda">
-                </div>
-
-                <!-- Detail Pekerjaan ASN bedasarkan OPD Kabupaten/Kota Lain -->
-                <div class="mb-3" id="detailOPD_kabupaten_kota" style="display: none;">
-                    <label for="detailOPD_kabupaten_kota" class="form-label">Sebutkan OPD Kabupaten/Kota Anda</label>
-                    <input type="text" class="form-control" id="detailOPD_kabupaten_kota" name="detailOPD_kabupaten_kota" placeholder="Sebutkan asal OPD Kabupaten/Kota anda">
-                </div>
-                <!-- End ASN SECTION -->
-
-
-                <!-- Pelaku Usaha -->
-                <!-- Usaha Untuk Pelaku Usaha -->
-                <div class="mb-3" id="namaUsahaPelakuUsaha" style="display: none;">
-                    <label for="pelaku_usaha_input" class="form-label">Nama Usaha Anda</label>
-                    <input type="tel" class="form-control" id="pelaku_usaha_input" name="pelaku_usaha" placeholder="Masukkan Nama Usaha Anda">
-                </div>
-
-                <!-- Jabatan Untuk Pelaku Usaha -->
-                <div class="mb-3" id="jabatanPelakuUsaha" style="display: none;">
-                    <label for="jabatan_pelaku_usaha" class="form-label">Jabatan Anda</label>
-                    <input type="tel" class="form-control" id="jabatan_pelaku_usaha" name="jabatan_pelaku_usaha" placeholder="Masukkan Jabatan Anda">
-                </div>
-                <!-- END Pelaku Usaha -->
-
-                <!-- Detail Pekerjaan Lainnya (Input) -->
-                <div class="mb-3" id="detailPekerjaanSpesifik" style="display: none;">
-                    <label for="detailPekerjaanInput" class="form-label">Detail Pekerjaan</label>
-                    <input type="text" class="form-control" id="detailPekerjaanInput" name="detailPekerjaanSpesifik" placeholder="Masukkan detail pekerjaan anda...">
-                </div>
-                <!-- end detail pekerjaan lainnya -->
+                <!-- Container untuk input detail Pekerjaan -->
+                <div class="mb-3 form-group" id="pekerjaanInput"></div>
+                <!-- end Container untuk input detail pekerjaan -->
             </div>
 
 
-            <!-- Step 3 -->
+            <!-- Step 3 - Reason -->
             <div class="form-step d-none" id="step3">
-                <!-- Keperluan -->
+                <!-- Keperluan Select -->
                 <div class="mb-3">
-                    <label for="keperluan" class="form-label">Keperluan Anda</label>
-                    <select class="form-select" id="keperluan" name="keperluan">
+                    <label for="keperluan" class="form-label">Pilih Keperluan Anda</label>
+                    <select class="form-select" id="keperluan" name="keperluan" required>
                         <option selected disabled value="">--- Pilih Keperluan Anda ---</option>
                         <option value="Kunjungan Dinas">Kunjungan Dinas</option>
                         <option value="Kunjungan non Dinas">Kunjungan Non Dinas</option>
@@ -174,11 +130,8 @@
                     </select>
                 </div>
 
-                <!-- Keperluan lebih lanjut -->
-                <div class="mb-3" id="keperluanInput" style="display: none;">
-                    <label for="keperluanDetail" class="form-label">Detail Keperluan</label>
-                    <input type="text" class="form-control" id="keperluanDetail" name="keperluanInput" placeholder="Masukkan detail keperluan anda...">
-                </div>
+                <!-- Detail Keperluan -->
+                <div class="form-group mb-3" id="detailKeperluan"></div>
             </div>
 
             <!-- button navigate -->
@@ -217,6 +170,7 @@
 
     <!-- Script JS -->
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/multistep-form.js"></script>
 </body>
 
 </html>

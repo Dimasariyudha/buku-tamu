@@ -1,65 +1,10 @@
 
-const steps = document.querySelectorAll('.form-step');
-    const stepIndicators = document.querySelectorAll('.step-indicator .step');
-    const lines = document.querySelectorAll('.step-indicator .line');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const submitButton = document.getElementById('submitButton');
-    let currentStep = 0;
-
-    function updateStep() {
-        steps.forEach((step, index) => {
-            step.classList.toggle('d-none', index !== currentStep);
-            stepIndicators[index].classList.toggle('active', index <= currentStep);
-            if (index < lines.length) {
-                lines[index].classList.toggle('active', index < currentStep);
-            }
-        });
-
-        prevButton.disabled = currentStep === 0;
-        nextButton.classList.toggle('d-none', currentStep === steps.length - 1);
-        submitButton.classList.toggle('d-none', currentStep !== steps.length - 1);
-    }
-
-    prevButton.addEventListener('click', () => {
-        if (currentStep > 0) {
-            currentStep--;
-            updateStep();
-        }
-    });
-
-    nextButton.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-            currentStep++;
-            updateStep();
-        }
-    });
-
-    updateStep();
-    
 
 // pekerjaan select
 const pekerjaanSelect = document.getElementById('pekerjaan'); //semua pekerjaan yg ada di form select
 
-const detailPekerjaanASN = document.getElementById('detailPekerjaan'); // detail pekerjaan container untuk asn/pns
-
-const detailPekerjaanSelectASN = document.getElementById('detailPekerjaanSelectASN'); // Mengambil nilai yg ada pada form select detail pekerjaan ASN
-
-// detail ASN dari opd provinsi 
-const detailOPD_provinsi_lain = document.getElementById('detailOPD_provinsi_lain');
-
-// detail ASN dari opd kabupaten kota
-const detailOPD_kabupaten_kota = document.getElementById('detailOPD_kabupaten_kota');
-
-const detailPekerjaanLainnyaSpesifik = document.getElementById('detailPekerjaanSpesifik'); //form input detail pekerjaan spesifik yg memilih lainnya
-
-// pelaku usaha
-const namaUsaha = document.getElementById('namaUsahaPelakuUsaha'); // form input untuk jenis usahanya
-const jabatanPelakuUsaha = document.getElementById('jabatanPelakuUsaha'); // form input jabatan usaha
-
-// keperluan
-const keperluanSelect = document.getElementById('keperluan');
-const keperluanInput = document.getElementById('keperluanInput');
+// Container untuk menampung pekerjaan yg spesifik dan di inputkan oleh user
+const pekerjaanContainer = document.getElementById('pekerjaanInput');
 
 
 // ketika pekerjaan di pilih
@@ -67,78 +12,165 @@ pekerjaanSelect.addEventListener('change', () => {
     // ambil nilainya kemudian simpan kedalam variable selectedValue
     const selectedValue = pekerjaanSelect.value;
     
+    // Periksa apakah elemen input sudah ada
+    // const existingInputPekerjaanLainnya = pekerjaanContainer.querySelector('input');
+    // const existingLabelPekerjaanLainnya = pekerjaanContainer.querySelector('label');
+
+    pekerjaanContainer.innerHTML = "";
+
     // CEK isi nilai dari pekejeraan yg di pilih
     if (selectedValue === 'ASN') {
-        // jika nilainya berupa ASN
-        detailPekerjaanASN.style.display = 'block'; // tampilkan detail pekerjaan select untuk ASN
-        detailPekerjaanLainnyaSpesifik.style.display = 'none'; //hilangkan form input pekerjaan untuk lainnya
-        // detailPekerjaanLainnyaSpesifik.querySelector('input').value = ''; // Kosongkan input spesifik jika sebelumnya diisi
+        // Buat List Dropdown untuk detail pekerjaan ASN jika di pilih
+        const detailASNLabel = document.createElement('label');
+        detailASNLabel.textContent = 'Detail Pekerjaan ASN';
+        detailASNLabel.className = 'form-label';
+        detailASNLabel.setAttribute('for', 'detailASN');
+
+        // form select create
+        const detailASNSelect = document.createElement('select');
+        detailASNSelect.id = 'detailASN';
+        detailASNSelect.name = 'detailASN';
+        detailASNSelect.className = 'form-select mb-3';
+        detailASNSelect.required = true;
+        detailASNSelect.innerHTML = `
+            <option value="">Pilih Detail ASN</option>
+            <option value="Kementerian/Lembaga Pemerintah Non Kementrian">Kementerian/Lembaga Pemerintah non Kementerian</option>
+            <option value="OPD Provinsi Sumut">OPD Provinsi Sumut</option>
+            <option value="OPD Provinsi Lain">OPD Provinsi Lain</option>
+            <option value="OPD Kabupten/Kota">OPD Kabupaten/Kota</option>
+        `;
+        
+        // Tambahkan ke container
+        pekerjaanContainer.appendChild(detailASNLabel);
+        pekerjaanContainer.appendChild(detailASNSelect);
 
 
-        // ketika detail pekerjaan ASN di pilih
-        detailPekerjaanSelectASN.addEventListener('change', () => {
-            const selectedDetailASN = detailPekerjaanSelectASN.value;
-            
-            // lakukan pengecekan bedasarkan pilihan detail anda Sebagai ASN
-            if (selectedDetailASN === 'OPD Provinsi Lain') {
-                detailOPD_provinsi_lain.style.display = 'block';
-                detailOPD_kabupaten_kota.style.display = 'none';
-                
-            } else if (selectedDetailASN === 'OPD Kabupaten/Kota') {
-                detailOPD_kabupaten_kota.style.display = 'block';
-                detailOPD_provinsi_lain.style.display = 'none';
+         // Event listener untuk opsi detail ASN
+        detailASNSelect.addEventListener('change', () => {
+            const selectedDetail = detailASNSelect.value;
+
+            // Hapus form tambahan jika ada
+            const existingDetailForm = document.getElementById('additionalDetail');
+            if (existingDetailForm) existingDetailForm.remove();
+
+            // Jika "OPD Provinsi Lain" atau "OPD Kabupaten/Kota" dipilih, tambahkan input
+            if (selectedDetail === 'OPD Provinsi Lain' || selectedDetail === 'OPD Kabupten/Kota') {
+                // Buat input tambahan untuk detail tertentu
+                const additionalDetailLabel = document.createElement('label');
+                additionalDetailLabel.textContent = selectedDetail === 'OPD Provinsi Lain' 
+                ? 'Masukkan Nama OPD Provinsi Lain' 
+                    : 'Masukkan Nama OPD Kabupaten/Kota';
+                additionalDetailLabel.className = 'form-label';
+                additionalDetailLabel.setAttribute('for', 'additionalDetail');
+
+                const additionalDetailInput = document.createElement('input');
+                additionalDetailInput.id = 'additionalDetail';
+                additionalDetailInput.type = 'text';
+                additionalDetailInput.name = 'additionalDetail';
+                additionalDetailInput.required = true;
+                additionalDetailInput.classList.add('form-control', 'mb-3')
+
+                // Tambahkan ke container
+                pekerjaanContainer.appendChild(additionalDetailLabel);
+                pekerjaanContainer.appendChild(additionalDetailInput);
             }
         });
 
-        //hilangkan nama usasha dan jabatan dari pelaku usaha
-        namaUsaha.style.display = 'none'; 
-        jabatanPelakuUsaha.style.display = 'none';
         
     } else if (selectedValue === 'Pelaku Usaha') {
-        // tampilkan nama usaha dan jabatan pelaku usaha
-        namaUsaha.style.display = 'block';
-        jabatanPelakuUsaha.style.display = 'block';
+        // Jika pekerjaan "Pelaku Usaha" dipilih tampilkan nama usaha dan jabatan pelaku usaha
+        const fields = [
+            { label: "Jenis Usaha", id: "jenisUsaha", placeholder: "Masukkan jenis usaha..." },
+            { label: "Nama Usaha", id: "namaUsaha", placeholder: "Masukkan nama usaha..." },
+            { label: "Jabatan", id: "jabatanUsaha", placeholder: "Masukkan jabatan..." }
+        ];
 
-        // hilangkan form select pekerjaan ASN dan hilangkan form input pekerjaan 'lainnya' 
-        detailPekerjaanASN.style.display = 'none';
-        detailPekerjaanLainnyaSpesifik.style.display = 'none';
-    }
-    
-    else if (selectedValue === 'Lainnya') {
-        // jika nilainnya Lainnya (pekerjaan), sembunyikan select detail pekerjaan untuk asn, tampilkan form input spesifik
-        detailPekerjaanASN.style.display = 'none';
-        detailPekerjaanASN.querySelector('select').value = ''; // Reset select detail pekerjaan jika sebelumnya diisi
+        // looping untuk membuat element label dan form input
+        fields.forEach(field => {
+            const label = document.createElement('label');
+            label.for = field.id;
+            label.innerText = field.label;
+            label.classList.add('form-label');
 
-        detailPekerjaanLainnyaSpesifik.style.display = 'block'; //tampilkan form input detail pekerjaan spesifik lainnya
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = field.id;
+            input.id = field.id;
+            input.placeholder = field.placeholder;
+            input.required = true;
+            input.classList.add('form-control', 'mb-3');
+
+            pekerjaanContainer.appendChild(label);
+            pekerjaanContainer.appendChild(input);
+        });
+
+    }else if (selectedValue === 'Lainnya') {
+        // Jika user memilih pekerjaannya 'Lainnya' maka akan muncul form input pekerjaan lainnya yg dapat di isi oleh user
         
-        //hilangkan nama usasha dan jabatan dari pelaku usaha
-        namaUsaha.style.display = 'none'; 
-        jabatanPelakuUsaha.style.display = 'none';
+        // element label
+            const label = document.createElement('label');
+            label.for = 'detailPekerjaanLainnya';
+            label.innerText = 'Detail Pekerjaan';
+            label.classList.add('form-label'); // Styling tambahan untuk margin atas
+            
+            // elemet input
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'detailPekerjaanLainnya';
+            input.id = 'detailPekerjaanLainnya';
+            input.placeholder = 'Masukkan detail pekerjaan anda...';
+            input.required = true;
+            input.classList.add('form-control')
+            // Tambahkan label dan input ke dalam container
+            pekerjaanContainer.appendChild(label);
+            pekerjaanContainer.appendChild(input);
+
+        
     } else {
-        // Jika Non PNS atau pelaku usaha dipilih, sembunyikan kedua elemen
-        detailPekerjaanASN.style.display = 'none';
-        // detailPekerjaan.querySelector('select').value = ''; // Reset select detail pekerjaan
+        // Jika tidak ada yang dipilih
 
-        detailPekerjaanLainnyaSpesifik.style.display = 'none';
-        
-        //hilangkan nama usasha dan jabatan dari pelaku usaha
-        namaUsaha.style.display = 'none'; 
-        jabatanPelakuUsaha.style.display = 'none';
     }
 });
 
 
+const keperluanSelect = document.getElementById('keperluan'); // ambil id Keperluan select dan simpan pada variable keperluan select
+const detailKeperluan = document.getElementById('detailKeperluan'); // Container untuk input detail keperluan
+
 // Event listener untuk pilihan keperluan
 keperluanSelect.addEventListener('change', function() {
-    const selectedValue = keperluanSelect.value; // Nilai yang dipilih
-    const keperluanInput = document.getElementById('keperluanInput'); // Elemen detail keperluan
+    const selectedKeperluanValue = keperluanSelect.value; // Nilai yang dipilih
 
-    // Tampilkan input untuk detail keperluan jika pilihan adalah 'Lainnya'
-    if (selectedValue === 'Lainnya') {
-        // Jika Lainnya dipilih, tampilkan input detail keperluan
-        keperluanInput.style.display = 'block';
+    // buat variable existingInput untuk menyimpan apakah element input & label sudah ada
+    const existingInput = detailKeperluan.querySelector('input');
+    const existingLabel = detailKeperluan.querySelector('label');
+    
+    if (selectedKeperluanValue === 'Lainnya') {
+        // Jika 'Lainnya' dipilih dan form input belum ada, buat elemen input dan label
+        if (!existingInput && !existingLabel) {
+            // elemen label form
+            const label = document.createElement('label');
+            label.for = 'detailKeperluan';
+            label.innerText = 'Detail Keperluan';
+            label.classList.add('form-label');
+
+            // element input form
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'detailKeperluan';
+            input.placeholder = 'Masukkan detail keperluan....';
+            input.required = true;
+            input.classList.add('form-control');
+
+            //Tambahkan input dan label kedalam container detail keperluan
+            detailKeperluan.appendChild(label);
+            detailKeperluan.appendChild(input); 
+
+        }
     } else {
-        keperluanInput.querySelector('input').value = ''; // Kosongkan input jika sebelumnya diisi
-        keperluanInput.style.display = 'none';
+        // Jika pilihan berubah dan tidak milih option Lainnya, hapus element label dan input keperluan detail
+        if (existingInput && existingLabel) {
+            detailKeperluan.removeChild(existingLabel);
+            detailKeperluan.removeChild(existingInput);
+        }
     }
 });
