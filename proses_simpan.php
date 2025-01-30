@@ -13,7 +13,7 @@ if (isset($_POST) == true) {
     // $nama_tamu = $_POST['nama_tamu'];
     // $no_hp = $_POST['no_hp'];
 
-    var_dump($_POST);
+    // var_dump($_POST);
 
     // pekerjaan (PNS, NON PNS, MAHASISWA, LAINNYA)
     // $jenis_tamu = $_POST['pekerjaan'];

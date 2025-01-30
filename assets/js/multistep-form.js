@@ -44,6 +44,7 @@ const nextButton = document.getElementById('nextButton');
 const submitButton = document.getElementById('submitButton');
 let currentStep = 0;
 
+// Fungsi untuk memperbarui tampilan step
 function updateStep() {
     steps.forEach((step, index) => {
         step.classList.toggle('d-none', index !== currentStep);
@@ -87,6 +88,7 @@ function validateCurrentStep() {
     return isValid;
 }
 
+// Event listener untuk tombol Previous
 prevButton.addEventListener('click', () => {
     if (currentStep > 0) {
         currentStep--;
@@ -94,6 +96,7 @@ prevButton.addEventListener('click', () => {
     }
 });
 
+// Event listener untuk tombol Next
 nextButton.addEventListener('click', () => {
     if (validateCurrentStep()) {
         if (currentStep < steps.length - 1) {
@@ -103,10 +106,12 @@ nextButton.addEventListener('click', () => {
     }
 });
 
+// Event listener untuk tombol Submit
 submitButton.addEventListener('click', (e) => {
     if (!validateCurrentStep()) {
         e.preventDefault(); // Mencegah pengiriman form jika validasi gagal
     }
 });
 
+// Inisialisasi step pertama
 updateStep();

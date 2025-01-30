@@ -66,7 +66,7 @@
             <div class="form-step" id="step1">
                 <div class="mb-3">
                     <label for="nomor_identitas_diri" class="form-label">Nomor Identitas Diri</label>
-                    <input type="text" class="form-control" id="nomor_identitas_diri" name="nomor_identitas_diri" placeholder="Masukkan NIK/Paspor/SIM anda" required>
+                    <input type="text" class="form-control" id="nomor_identitas_diri" name="nomor_identitas_diri" placeholder="Masukkan No. KTP/Paspor/SIM Anda" required>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama</label>
