@@ -12,45 +12,6 @@ include './connection.php';
 // }
 
 
-// Ambil parameter GET untuk filter
-$periode = $_GET['periode'] ?? 'all';
-$bulan = $_GET['bulan'] ?? 'all';
-$tahun = $_GET['tahun'] ?? 'all';
-
-// // Bangun query dengan kondisi dinamis
-// $query = "
-//     SELECT tamu.id_tamu, tamu.nomor_identitas, tamu.nama_tamu, tamu.no_hp, tamu.jenis_tamu AS instansi, tamu.keperluan, kunjungan.tanggal_kunjungan 
-//     FROM tamu
-//     JOIN kunjungan ON tamu.id_tamu = kunjungan.id_tamu
-// ";
-
-$conditions = [];
-if ($periode == 'harian') {
-    $conditions[] = "DATE(kunjungan.tanggal_kunjungan) = CURDATE()";
-} elseif ($periode == 'mingguan') {
-    $conditions[] = "YEARWEEK(kunjungan.tanggal_kunjungan, 1) = YEARWEEK(CURDATE(), 1)";
-} elseif ($periode == 'bulanan') {
-    if ($bulan != 'all') {
-        $conditions[] = "MONTH(kunjungan.tanggal_kunjungan) = $bulan";
-    }
-    if ($tahun != 'all') {
-        $conditions[] = "YEAR(kunjungan.tanggal_kunjungan) = $tahun";
-    }
-} elseif ($periode == 'tahunan') {
-    if ($tahun != 'all') {
-        $conditions[] = "YEAR(kunjungan.tanggal_kunjungan) = $tahun";
-    }
-}
-
-// if (!empty($conditions)) {
-//     $query .= " WHERE " . implode(" AND ", $conditions);
-// }
-
-// Eksekusi query
-// $result = $koneksi->query($query);
-// if (!$result) {
-//     die("Query gagal: " . $koneksi->error);
-// }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +20,7 @@ if ($periode == 'harian') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Siap Layani</title>
+    <title>Siap Layani - Table Login</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -103,12 +64,12 @@ if ($periode == 'harian') {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Selamat Datang</h1>
+                            <h1 class="m-0">Data Pegawai</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item active">Data Pegawai</li>
                             </ol>
                         </div>
                     </div>
@@ -121,7 +82,7 @@ if ($periode == 'harian') {
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Tamu</h3>
+                                    <h3 class="card-title">Data Pegawai</h3>
                                 </div>
                                 <div class="card-body">
 
@@ -131,12 +92,9 @@ if ($periode == 'harian') {
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nomor Identitas</th>
-                                                <th>Nama Tamu</th>
-                                                <th>Nomor HP</th>
-                                                <th>Instansi</th>
-                                                <th>Keperluan</th>
-                                                <th>Tanggal & Jam</th>
+                                                <th>Nama Pegawai</th>
+                                                <th>Status</th>
+                                                <th>Jabatan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
